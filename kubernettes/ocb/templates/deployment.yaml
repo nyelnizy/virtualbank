@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.deployment.name}}
+spec:
+  selector:
+    matchLabels:
+      app: {{.Values.deployment.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.deployment.name}}
+    spec:
+      containers:
+        - name: {{.Values.deployment.name}}
+          image: {{.Values.deployment.name}}
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: {{.Values.deployment.memory}}
+              cpu: {{.Values.deployment.cpu}}
+          envFrom:
+            - configMapRef:
+                name: {{.Values.deployment.configRef}}
+            - secretRef:
+                name: {{.Values.deployment.secretRef}}
+          ports:
+            - containerPort: {{.Values.deployment.port}}

@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ocb-mysql-conn
+type: Opaque
+data:
+  MYSQL_ROOT_PASSWORD: b2Nicm9vdHBhc3M=
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "./data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 250Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: ocbdbpod
+  template:
+    metadata:
+      name: ocbdbpod
+      labels:
+        name: ocbdbpod
+    spec:
+      volumes:
+        - name: mysql-pv
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+      containers:
+        - name: mysql
+          image: mysql:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ocb-mysql-conn
+                  key: MYSQL_ROOT_PASSWORD
+          volumeMounts:
+            - name: mysql-pv
+              mountPath: /var/lib/mysql
+          ports:
+            - containerPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqlservice
+spec:
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  selector:
+    name: ocbdbpod
+---

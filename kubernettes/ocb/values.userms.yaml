@@ -1,0 +1,20 @@
+deployment:
+  name: "userms"
+  configRef: "userms-config"
+  secretRef: "userms-secret"
+  memory: "128Mi"
+  cpu: "500m"
+  port: "9200"
+service:
+  name: "userms"
+  targetPort: "9200"
+  port: "9200"
+secret:
+  name: "userms-secret"
+  dbname: dXNlcm1zZGI= #usermsdb
+  dbuser: dXNlcm1zdXNlcg== #usermsuser
+  dbpassword: dXNlcm1zcGFzcw== #usermspass
+  dbhost: bXlzcWwtc2VydmljZQ==  #mysql-service
+  dbport: MzMwNg== #3306
+config:
+  name: "userms-config"

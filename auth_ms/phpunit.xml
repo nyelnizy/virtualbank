@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+<!--        <testsuite name="Feature">-->
+<!--            <directory suffix="Test.php">./tests/Feature</directory>-->
+<!--        </testsuite>-->
+        <testsuite name="Consumer">
+            <directory>./tests/Contract/Consumer</directory>
+        </testsuite>
+    </testsuites>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./app</directory>
+        </include>
+    </coverage>
+    <listeners>
+        <listener class="PhpPact\Consumer\Listener\PactTestListener">
+            <arguments>
+                <array>
+                    <element key="0">
+                        <string>Consumer</string>
+                    </element>
+                </array>
+            </arguments>
+        </listener>
+    </listeners>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="CACHE_DRIVER" value="array"/>
+         <env name="DB_CONNECTION" value="sqlite"/>
+         <env name="DB_DATABASE" value=":memory:"/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+
+        <env name="PACT_MOCK_SERVER_HOST" value="localhost"/>
+        <env name="PACT_MOCK_SERVER_PORT" value="7200"/>
+        <env name="PACT_CONSUMER_NAME" value="authms"/>
+        <env name="PACT_CONSUMER_VERSION" value="1.0.0"/>
+        <env name="PACT_CONSUMER_TAG" value="master"/>
+        <env name="PACT_PROVIDER_NAME" value="userms"/>
+        <env name="PACT_OUTPUT_DIR" value="..\pact\output"/>
+        <env name="PACT_MOCK_SERVER_HEALTH_CHECK_TIMEOUT" value="10"/>
+        <!-- <env name="PACT_BROKER_URI" value="http://localhost"/> -->
+    </php>
+</phpunit>

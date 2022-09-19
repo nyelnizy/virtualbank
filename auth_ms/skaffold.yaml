@@ -1,0 +1,32 @@
+apiVersion: skaffold/v2beta9
+kind: Config
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: authms
+      context: .
+      sync:
+        infer:
+          - "**/*"
+#deploy:
+#  kubectl:
+#    manifests:
+#      - ../kubernettes/authms/config-maps/*
+#      - ../kubernettes/authms/secrets/*
+#      - ../kubernettes/authms/dbserver/*
+#      - ../kubernettes/authms/deployment.yaml
+#      - ../kubernettes/authms/service.yaml
+
+deploy:
+  statusCheckDeadlineSeconds: 60
+  helm:
+    releases:
+      - name: authms
+        chartPath: ../kubernettes/ocb
+        valuesFiles:
+          - ../kubernettes/ocb/values.authms.yaml
+        artifactOverrides:
+          image: authms
+        imageStrategy:
+          helm: { }

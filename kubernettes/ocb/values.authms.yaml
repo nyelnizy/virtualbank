@@ -1,0 +1,21 @@
+deployment:
+  name: "authms"
+  configRef: "authms-config"
+  secretRef: "authms-secret"
+  memory: "128Mi"
+  cpu: "500m"
+  port: "9200"
+service:
+  name: "authms"
+  targetPort: "9200"
+  port: "9200"
+secret:
+  name: "authms-secret"
+  dbname: YXV0aG1zZGI= #authmsdb
+  dbuser: YXV0aG1zdXNlcg== #authmsuser
+  dbpassword: YXV0aG1zcGFzcw== #authmspass
+  dbhost: bXlzcWxzZXJ2aWNl  #mysqlservice
+  dbport: MzMwNg== #3306
+config:
+  name: "authms-config"
+  userms: "userms"

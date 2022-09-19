@@ -1,0 +1,38 @@
+{
+  "consumer": {
+    "name": "authms"
+  },
+  "provider": {
+    "name": "userms"
+  },
+  "interactions": [
+    {
+      "description": "A get request to /api/v1/users?username=yhiamdan",
+      "providerState": "A user with username yhiamdan exists",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/users",
+        "query": "username=yhiamdan",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 1,
+          "password": "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
