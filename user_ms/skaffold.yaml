@@ -4,7 +4,7 @@ build:
   tagPolicy:
     sha256: {}
   artifacts:
-    - image: authms
+    - image: userms
       context: .
       sync:
         manual:
@@ -24,11 +24,11 @@ deploy:
   statusCheckDeadlineSeconds: 60
   helm:
     releases:
-      - name: authms
+      - name: userms
         chartPath: ../kubernettes/ocb
         valuesFiles:
-          - ../kubernettes/ocb/values.authms.yaml
+          - ../kubernettes/ocb/values.userms.yaml
         artifactOverrides:
-          image: authms
+          image: userms
         imageStrategy:
           helm: { }

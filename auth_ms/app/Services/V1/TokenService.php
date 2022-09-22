@@ -33,7 +33,7 @@ class TokenService
         return Configuration::forAsymmetricSigner(
         // You may use RSA or ECDSA and all their variations (256, 384, and 512) and EdDSA over Curve25519
             new Sha256(),
-            InMemory::file(base_path('keys/tym.pem')),
+            InMemory::plainText(config("virtualbank.private_key")),
             InMemory::empty()
         );
     }

@@ -8,9 +8,12 @@
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+         <testsuite name="Contract">
+            <directory suffix="Test.php">./tests/Contract</directory>
         </testsuite>
+        <!-- <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite> -->
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>

@@ -1,0 +1,144 @@
+
+# ZOOKEEPER PV
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: zookeeper-pv
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "./zookeeper"
+---
+# ZOOKEEPER PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zookeeper-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 250Mi
+---
+# ZOOKEEPER DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeeper-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: zookeeperpod
+  template:
+    metadata:
+      name: zookeeperpod
+      labels:
+        name: zookeeperpod
+    spec:
+      volumes:
+        - name: zookeeper-pv
+          persistentVolumeClaim:
+            claimName: zookeeper-pv-claim
+      containers:
+        - name: zookeeper
+          image: zookeeper:latest
+          env:
+            - name: ALLOW_ANONYMOUS_LOGIN
+              value: "yes"
+          volumeMounts:
+            - name: zookeeper-pv
+              mountPath: /bitnami
+          ports:
+            - containerPort: 2181
+---
+# ZOOKEEPER SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeperservice
+spec:
+  ports:
+    - protocol: TCP
+      port: 2181
+      targetPort: 2181
+  selector:
+    name: zookeeperpod
+---
+
+# KAFKA PV
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka-pv
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "./kafka"
+---
+# KAFKA PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kafka-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 250Mi
+---
+# KAFKA DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: kafkapod
+  template:
+    metadata:
+      name: kafkapod
+      labels:
+        name: kafkapod
+    spec:
+      volumes:
+        - name: kafka-pv
+          persistentVolumeClaim:
+            claimName: kafka-pv-claim
+      containers:
+        - name: kafka
+          image: docker.io/bitnami/kafka:3.2
+          env:
+            - name: KAFKA_CFG_ZOOKEEPER_CONNECT
+              value: "zookeeperservice"
+            - name: ALLOW_PLAINTEXT_LISTENER
+              value: "yes"
+          volumeMounts:
+            - name: kafka-pv
+              mountPath: /bitnami
+          ports:
+            - containerPort: 2181
+---
+# KAFKA SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafkaservice
+spec:
+  ports:
+    - protocol: TCP
+      port: 2181
+      targetPort: 2181
+  selector:
+    name: kafkapod
+---

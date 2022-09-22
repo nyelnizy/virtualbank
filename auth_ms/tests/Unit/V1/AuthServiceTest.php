@@ -25,6 +25,9 @@ class AuthServiceTest extends TestCase
 {
     use RefreshDatabase;
     private $user_id = 1;
+    private $password = "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi";
+    private $raw_password = "password";
+    
     public function test_issue_token_returns_valid_token_if_user_is_found()
     {
         $this->instance(
@@ -32,7 +35,7 @@ class AuthServiceTest extends TestCase
             Mockery::mock(UserClient::class, function (MockInterface $mock) {
                 $mock->shouldReceive('getUser')
                     ->once()
-                    ->andReturn(['id' => $this->user_id,"password"=>"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"]);
+                    ->andReturn(['id' => $this->user_id,"password"=>$this->password]);
             })
         );
         $this->instance(
@@ -50,7 +53,7 @@ class AuthServiceTest extends TestCase
         $authService = $this->app->make(AuthService::class);
         $token = null;
         try {
-            $token = $authService->issueToken(['username' => 'testuser', 'password' => 'password']);
+            $token = $authService->issueToken(['username' => 'testuser', 'password' => $this->raw_password]);
         } catch (\ErrorException $e) {
             var_dump($e->getMessage());
         }
@@ -72,7 +75,7 @@ class AuthServiceTest extends TestCase
         $token = null;
         $exception_message = null;
         try {
-            $token = $authService->issueToken(['username' => 'testuser', 'password' => 'password']);
+            $token = $authService->issueToken(['username' => 'testuser', 'password' => $this->raw_password]);
         } catch (\ErrorException $e) {
             $exception_message = $e->getMessage();
 
@@ -88,7 +91,7 @@ class AuthServiceTest extends TestCase
         $authService = $this->app->make(AuthService::class);
         $token = null;
         try {
-            $token = $authService->issueToken(['username' => 'testuser', 'password' => 'password','remember'=>true]);
+            $token = $authService->issueToken(['username' => 'testuser', 'password' => $this->raw_password,'remember'=>true]);
         } catch (\ErrorException $e) {
             var_dump($e->getMessage());
         }
@@ -105,7 +108,7 @@ class AuthServiceTest extends TestCase
         $authService = $this->app->make(AuthService::class);
         $token = null;
         try {
-            $token = $authService->issueToken(['username' => 'testuser', 'password' => 'password','remember'=>false]);
+            $token = $authService->issueToken(['username' => 'testuser', 'password' => $this->raw_password,'remember'=>false]);
         } catch (\ErrorException $e) {
             var_dump($e->getMessage());
         }
@@ -213,7 +216,7 @@ class AuthServiceTest extends TestCase
         $config = Configuration::forAsymmetricSigner(
             new Sha256(),
             InMemory::empty(),
-            InMemory::file(base_path('keys/tym-pub.pem'))
+            InMemory::plainText(config("virtualbank.public_key"))
         );
         $config->setValidationConstraints(new IssuedBy(config('app.url')));
         $config->setValidationConstraints(new IdentifiedBy("token". 1));
@@ -233,7 +236,7 @@ class AuthServiceTest extends TestCase
             Mockery::mock(UserClient::class, function (MockInterface $mock) {
                 $mock->shouldReceive('getUser')
                     ->once()
-                    ->andReturn(['id' => $this->user_id,"password"=>"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"]);
+                    ->andReturn(['id' => $this->user_id,"password"=>$this->password]);
             })
         );
         $this->instance(

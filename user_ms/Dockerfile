@@ -10,20 +10,23 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip\
     xvfb\
-    libzip-dev
+    libzip-dev\
+    librdkafka-dev
 # Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN pecl install rdkafka && docker-php-ext-enable rdkafka
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip pcntl
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run Composer and Artisan Commands
-RUN useradd -G www-data,root -u 1000 -d /home/authms authms
-RUN mkdir -p /home/authms/.composer && \
-    chown -R authms:authms /home/authms &&\
+RUN useradd -G www-data,root -u 1000 -d /home/userms userms
+RUN mkdir -p /home/userms/.composer && \
+    chown -R userms:userms /home/userms &&\
     mkdir /var/virtualbank
 
 # Set working directory
@@ -41,5 +44,8 @@ RUN composer install \
 
 COPY . .
 RUN composer dump-autoload
-RUN chown -R authms:authms /var/virtualbank
-USER authms
+RUN chown -R userms:userms /var/virtualbank
+
+USER userms
+
+CMD ["php","artisan","serve","--port=9200"]

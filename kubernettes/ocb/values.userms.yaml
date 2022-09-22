@@ -14,7 +14,7 @@ secret:
   dbname: dXNlcm1zZGI= #usermsdb
   dbuser: dXNlcm1zdXNlcg== #usermsuser
   dbpassword: dXNlcm1zcGFzcw== #usermspass
-  dbhost: bXlzcWwtc2VydmljZQ==  #mysql-service
+  dbhost: bXlzcWxzZXJ2aWNl  #mysqlservice
   dbport: MzMwNg== #3306
 config:
   name: "userms-config"

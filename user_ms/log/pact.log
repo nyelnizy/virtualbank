@@ -1,0 +1,1537 @@
+I, [2022-09-20T17:16:58.078748 #11560]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T17:17:02.757056 #11560]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T17:17:02.757056 #11560] DEBUG -- : body :
+I, [2022-09-20T17:17:03.550474 #11560]  INFO -- : Received response with status: 500, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 17:16:09 GMT\nTue, 20 Sep 2022 17:16:09 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.0", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"14928"}, see debug logs for body
+D, [2022-09-20T17:17:03.550474 #11560] DEBUG -- : body: {
+    "message": "SQLSTATE[HY000] [2002] Connection refused (SQL: select * from `users` where `name` = yhiamdan limit 1)",
+    "exception": "Illuminate\\Database\\QueryException",
+    "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+    "line": 712,
+    "trace": [
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 784,
+            "function": "runQueryCallback",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 764,
+            "function": "tryAgainIfCausedByLostConnection",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 675,
+            "function": "handleQueryException",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 376,
+            "function": "run",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2513,
+            "function": "select",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2501,
+            "function": "runSelect",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 3035,
+            "function": "Illuminate\\Database\\Query\\{closure}",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2502,
+            "function": "onceWithColumns",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 632,
+            "function": "get",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 616,
+            "function": "getModels",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php",
+            "line": 296,
+            "function": "get",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Repositories/UserRepository.php",
+            "line": 15,
+            "function": "first",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Services/UserService.php",
+            "line": 34,
+            "function": "findUserByName",
+            "class": "App\\Repositories\\UserRepository",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Http/Controllers/UsersController.php",
+            "line": 20,
+            "function": "getUserForLogin",
+            "class": "App\\Services\\UserService",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+            "line": 54,
+            "function": "getUser",
+            "class": "App\\Http\\Controllers\\UsersController",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+            "line": 45,
+            "function": "callAction",
+            "class": "Illuminate\\Routing\\Controller",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 261,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\ControllerDispatcher",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 204,
+            "function": "runController",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 725,
+            "function": "run",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Routing\\{closure}",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
+            "line": 50,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 126,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 102,
+            "function": "handleRequest",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 54,
+            "function": "handleRequestUsingNamedLimiter",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 727,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 702,
+            "function": "runRouteWithinStack",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 666,
+            "function": "runRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 655,
+            "function": "dispatchToRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 167,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Foundation\\Http\\{closure}",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+            "line": 31,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+            "line": 40,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+            "line": 27,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "line": 86,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php",
+            "line": 62,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\HandleCors",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php",
+            "line": 39,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\TrustProxies",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 142,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 111,
+            "function": "sendRequestThroughRouter",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/public/index.php",
+            "line": 52,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php",
+            "line": 16,
+            "function": "require_once"
+        }
+    ]
+}
+I, [2022-09-20T17:32:50.955727 #2436]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T17:32:55.803327 #2436]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T17:32:55.804334 #2436] DEBUG -- : body :
+I, [2022-09-20T17:32:56.531092 #2436]  INFO -- : Received response with status: 500, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 17:32:02 GMT\nTue, 20 Sep 2022 17:32:02 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.0", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"14928"}, see debug logs for body
+D, [2022-09-20T17:32:56.531879 #2436] DEBUG -- : body: {
+    "message": "SQLSTATE[HY000] [2002] Connection refused (SQL: select * from `users` where `name` = yhiamdan limit 1)",
+    "exception": "Illuminate\\Database\\QueryException",
+    "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+    "line": 712,
+    "trace": [
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 784,
+            "function": "runQueryCallback",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 764,
+            "function": "tryAgainIfCausedByLostConnection",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 675,
+            "function": "handleQueryException",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 376,
+            "function": "run",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2513,
+            "function": "select",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2501,
+            "function": "runSelect",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 3035,
+            "function": "Illuminate\\Database\\Query\\{closure}",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2502,
+            "function": "onceWithColumns",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 632,
+            "function": "get",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 616,
+            "function": "getModels",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php",
+            "line": 296,
+            "function": "get",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Repositories/UserRepository.php",
+            "line": 15,
+            "function": "first",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Services/UserService.php",
+            "line": 34,
+            "function": "findUserByName",
+            "class": "App\\Repositories\\UserRepository",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Http/Controllers/UsersController.php",
+            "line": 20,
+            "function": "getUserForLogin",
+            "class": "App\\Services\\UserService",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+            "line": 54,
+            "function": "getUser",
+            "class": "App\\Http\\Controllers\\UsersController",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+            "line": 45,
+            "function": "callAction",
+            "class": "Illuminate\\Routing\\Controller",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 261,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\ControllerDispatcher",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 204,
+            "function": "runController",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 725,
+            "function": "run",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Routing\\{closure}",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
+            "line": 50,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 126,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 102,
+            "function": "handleRequest",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 54,
+            "function": "handleRequestUsingNamedLimiter",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 727,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 702,
+            "function": "runRouteWithinStack",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 666,
+            "function": "runRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 655,
+            "function": "dispatchToRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 167,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Foundation\\Http\\{closure}",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+            "line": 31,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+            "line": 40,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+            "line": 27,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "line": 86,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php",
+            "line": 62,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\HandleCors",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php",
+            "line": 39,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\TrustProxies",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 142,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 111,
+            "function": "sendRequestThroughRouter",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/public/index.php",
+            "line": 52,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php",
+            "line": 16,
+            "function": "require_once"
+        }
+    ]
+}
+I, [2022-09-20T17:37:32.058915 #16600]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T17:37:37.018289 #16600]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has a matching body'
+I, [2022-09-20T17:37:37.751966 #16600]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which includes headers "Content-Type" which equals "application/json"'
+I, [2022-09-20T17:41:25.226893 #6052]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T17:41:30.035994 #6052]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has a matching body'
+I, [2022-09-20T17:41:30.820657 #6052]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which includes headers "Content-Type" which equals "application/json"'
+I, [2022-09-20T17:57:51.362132 #9020]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T17:57:57.789183 #9020]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T17:57:57.789183 #9020] DEBUG -- : body :
+I, [2022-09-20T17:57:58.555007 #9020]  INFO -- : Received response with status: 500, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 17:57:04 GMT\nTue, 20 Sep 2022 17:57:04 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.0", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"14928"}, see debug logs for body
+D, [2022-09-20T17:57:58.555547 #9020] DEBUG -- : body: {
+    "message": "SQLSTATE[HY000] [2002] Connection refused (SQL: select * from `users` where `name` = yhiamdan limit 1)",
+    "exception": "Illuminate\\Database\\QueryException",
+    "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+    "line": 712,
+    "trace": [
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 784,
+            "function": "runQueryCallback",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 764,
+            "function": "tryAgainIfCausedByLostConnection",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 675,
+            "function": "handleQueryException",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 376,
+            "function": "run",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2513,
+            "function": "select",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2501,
+            "function": "runSelect",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 3035,
+            "function": "Illuminate\\Database\\Query\\{closure}",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2502,
+            "function": "onceWithColumns",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 632,
+            "function": "get",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 616,
+            "function": "getModels",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php",
+            "line": 296,
+            "function": "get",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Repositories/UserRepository.php",
+            "line": 15,
+            "function": "first",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Services/UserService.php",
+            "line": 34,
+            "function": "findUserByName",
+            "class": "App\\Repositories\\UserRepository",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Http/Controllers/UsersController.php",
+            "line": 20,
+            "function": "getUserForLogin",
+            "class": "App\\Services\\UserService",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+            "line": 54,
+            "function": "getUser",
+            "class": "App\\Http\\Controllers\\UsersController",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+            "line": 45,
+            "function": "callAction",
+            "class": "Illuminate\\Routing\\Controller",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 261,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\ControllerDispatcher",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 204,
+            "function": "runController",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 725,
+            "function": "run",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Routing\\{closure}",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
+            "line": 50,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 126,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 102,
+            "function": "handleRequest",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 54,
+            "function": "handleRequestUsingNamedLimiter",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 727,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 702,
+            "function": "runRouteWithinStack",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 666,
+            "function": "runRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 655,
+            "function": "dispatchToRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 167,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Foundation\\Http\\{closure}",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+            "line": 31,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+            "line": 40,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+            "line": 27,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "line": 86,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php",
+            "line": 62,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\HandleCors",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php",
+            "line": 39,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\TrustProxies",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 142,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 111,
+            "function": "sendRequestThroughRouter",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/public/index.php",
+            "line": 52,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php",
+            "line": 16,
+            "function": "require_once"
+        }
+    ]
+}
+I, [2022-09-20T18:41:13.024836 #5328]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T18:41:19.033506 #5328]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T18:41:19.033506 #5328] DEBUG -- : body :
+I, [2022-09-20T18:41:19.813030 #5328]  INFO -- : Received response with status: 500, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 18:40:26 GMT\nTue, 20 Sep 2022 18:40:26 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.0", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"14928"}, see debug logs for body
+D, [2022-09-20T18:41:19.813561 #5328] DEBUG -- : body: {
+    "message": "SQLSTATE[HY000] [2002] Connection refused (SQL: select * from `users` where `name` = yhiamdan limit 1)",
+    "exception": "Illuminate\\Database\\QueryException",
+    "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+    "line": 712,
+    "trace": [
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 784,
+            "function": "runQueryCallback",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 764,
+            "function": "tryAgainIfCausedByLostConnection",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 675,
+            "function": "handleQueryException",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+            "line": 376,
+            "function": "run",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2513,
+            "function": "select",
+            "class": "Illuminate\\Database\\Connection",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2501,
+            "function": "runSelect",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 3035,
+            "function": "Illuminate\\Database\\Query\\{closure}",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
+            "line": 2502,
+            "function": "onceWithColumns",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 632,
+            "function": "get",
+            "class": "Illuminate\\Database\\Query\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+            "line": 616,
+            "function": "getModels",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php",
+            "line": 296,
+            "function": "get",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Repositories/UserRepository.php",
+            "line": 15,
+            "function": "first",
+            "class": "Illuminate\\Database\\Eloquent\\Builder",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Services/UserService.php",
+            "line": 34,
+            "function": "findUserByName",
+            "class": "App\\Repositories\\UserRepository",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/app/Http/Controllers/UsersController.php",
+            "line": 20,
+            "function": "getUserForLogin",
+            "class": "App\\Services\\UserService",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+            "line": 54,
+            "function": "getUser",
+            "class": "App\\Http\\Controllers\\UsersController",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+            "line": 45,
+            "function": "callAction",
+            "class": "Illuminate\\Routing\\Controller",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 261,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\ControllerDispatcher",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 204,
+            "function": "runController",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 725,
+            "function": "run",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Routing\\{closure}",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
+            "line": 50,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 126,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 102,
+            "function": "handleRequest",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+            "line": 54,
+            "function": "handleRequestUsingNamedLimiter",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 727,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 702,
+            "function": "runRouteWithinStack",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 666,
+            "function": "runRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 655,
+            "function": "dispatchToRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 167,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Foundation\\Http\\{closure}",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+            "line": 31,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+            "line": 40,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+            "line": 27,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "line": 86,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php",
+            "line": 62,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\HandleCors",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php",
+            "line": 39,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Http\\Middleware\\TrustProxies",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 142,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 111,
+            "function": "sendRequestThroughRouter",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/public/index.php",
+            "line": 52,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "->"
+        },
+        {
+            "file": "/var/virtualbank/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php",
+            "line": 16,
+            "function": "require_once"
+        }
+    ]
+}
+I, [2022-09-20T19:02:10.237091 #17036]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T19:02:15.375968 #17036]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T19:02:15.375968 #17036] DEBUG -- : body :
+I, [2022-09-20T19:02:17.711558 #17036]  INFO -- : Received response with status: 200, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 19:02:17 GMT\nTue, 20 Sep 2022 19:02:17 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.1", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"175"}, see debug logs for body
+D, [2022-09-20T19:02:17.711558 #17036] DEBUG -- : body: {"data":{"id":1,"name":"yhiamdan","email":"yhiamdan@gmail.com","email_verified_at":null,"created_at":"2022-09-20T19:02:15.000000Z","updated_at":"2022-09-20T19:02:15.000000Z"}}
+I, [2022-09-20T19:05:00.337777 #15940]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T19:05:05.605478 #15940]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T19:05:05.605478 #15940] DEBUG -- : body :
+I, [2022-09-20T19:05:07.948556 #15940]  INFO -- : Received response with status: 200, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 19:05:07 GMT\nTue, 20 Sep 2022 19:05:07 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.1", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"85"}, see debug logs for body
+D, [2022-09-20T19:05:07.948556 #15940] DEBUG -- : body: {"id":1,"password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi"}
+I, [2022-09-20T19:07:01.932310 #10672]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T19:07:07.466793 #10672]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T19:07:07.467796 #10672] DEBUG -- : body :
+I, [2022-09-20T19:07:09.805312 #10672]  INFO -- : Received response with status: 200, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 19:07:09 GMT\nTue, 20 Sep 2022 19:07:09 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.1", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"85"}, see debug logs for body
+D, [2022-09-20T19:07:09.805819 #10672] DEBUG -- : body: {"id":1,"password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi"}
+I, [2022-09-20T19:08:07.348924 #14980]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T19:08:09.666762 #14980]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T19:08:09.667761 #14980] DEBUG -- : body :
+I, [2022-09-20T19:08:12.015214 #14980]  INFO -- : Received response with status: 200, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 19:08:12 GMT\nTue, 20 Sep 2022 19:08:12 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.1", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"85"}, see debug logs for body
+D, [2022-09-20T19:08:12.015214 #14980] DEBUG -- : body: {"id":1,"password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi"}
+I, [2022-09-20T19:09:08.826884 #14928]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T19:09:13.984682 #14928]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T19:09:13.984682 #14928] DEBUG -- : body :
+I, [2022-09-20T19:09:16.298644 #14928]  INFO -- : Received response with status: 200, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 19:09:16 GMT\nTue, 20 Sep 2022 19:09:16 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.1", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"85"}, see debug logs for body
+D, [2022-09-20T19:09:16.298644 #14928] DEBUG -- : body: {"id":1,"password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi"}
+I, [2022-09-20T19:10:17.756504 #2204]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T19:10:20.053684 #2204]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T19:10:20.053684 #2204] DEBUG -- : body :
+I, [2022-09-20T19:10:22.381860 #2204]  INFO -- : Received response with status: 200, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 19:10:22 GMT\nTue, 20 Sep 2022 19:10:22 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.1", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"58", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"85"}, see debug logs for body
+D, [2022-09-20T19:10:22.381860 #2204] DEBUG -- : body: {"id":1,"password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi"}
+I, [2022-09-20T19:10:47.057249 #16600]  INFO -- : Running example 'Verifying a pact between authms and userms Given A user with username yhiamdan exists A get request to /api/v1/users?username=yhiamdan with GET /api/v1/users?username=yhiamdan returns a response which has status code 200'
+I, [2022-09-20T19:10:49.453667 #16600]  INFO -- : Sending GET request to path: "/api/v1/users?username=yhiamdan" with headers: {"HTTP_ACCEPT"=>"application/json", "CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Accept,Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"A user with username yhiamdan exists"}]}, see debug logs for body
+D, [2022-09-20T19:10:49.454666 #16600] DEBUG -- : body :
+I, [2022-09-20T19:10:51.716950 #16600]  INFO -- : Received response with status: 200, headers: {"Host"=>"localhost:9200", "Date"=>"Tue, 20 Sep 2022 19:10:51 GMT\nTue, 20 Sep 2022 19:10:51 GMT", "Connection"=>"close", "X-Powered-By"=>"PHP/8.1.1", "Cache-Control"=>"no-cache, private", "Content-Type"=>"application/json", "X-Ratelimit-Limit"=>"60", "X-Ratelimit-Remaining"=>"56", "Access-Control-Allow-Origin"=>"*", "Content-Length"=>"85"}, see debug logs for body
+D, [2022-09-20T19:10:51.717945 #16600] DEBUG -- : body: {"id":1,"password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi"}
